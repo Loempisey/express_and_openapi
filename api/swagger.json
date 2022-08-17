@@ -1,0 +1,194 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Document API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8888"
+    }
+  ],
+  "components":{
+    "schemas": {
+      "Product":{
+        "type": "object",
+        "properties":{
+          "pro_name":{
+            "type": "string"
+          },
+          "description":{
+            "type": "string"
+          },
+          "category":{
+            "type": "string"
+          },
+          "price":{
+            "type": "integer"
+          }
+        }
+      },
+
+      "updateProduct": {
+        "type": "object",
+        "required": [
+          "pro_name",
+          "description",
+          "category",
+          "price"
+        ],
+        "properties": {
+          "pro_name": {
+            "type": "string",
+            "example": "Danisa"
+          },
+          "description":{
+            "type": "string",
+            "example": "good"
+          },
+          "category": {
+            "type": "string",
+            "example": "cake"
+          },
+          "price": {
+            "type": "string",
+            "example": "12"
+          }
+
+        }
+      }
+    }
+  },
+
+  "paths": {
+    "/products": {
+      "get": {
+        "summary": "return all products",
+        "responses": {
+          "200":{
+            "description": "successfully",
+            "content":{
+              "application/json": {
+                "schema":{
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "post": {
+        "summary": "create a new product",
+        "requestBody":{
+          "required": "true",
+          "content":{
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "successfully",
+            "content":{
+              "application/json": {
+                "schema":{
+                  "$ref":"#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      }
+    },  
+    "/products/{id}":{
+      "get": {
+        "summary": "return all products",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema":{
+              "type": "string"
+            },
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200":{
+            "description": "successfully",
+            "content":{
+              "application/json": {
+                "schema":{
+                    "$ref": "#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "put": {
+        "summary": "update product by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema":{
+              "type": "string"
+            },
+            "required": "true"
+          }
+        ],
+        "requestBody":{
+          "required": "true",
+          "content":{
+            "application/json":{
+              "schema": {
+                "$ref":"#/components/schemas/Product"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200":{
+            "description": "product updated",
+            "content":{
+              "application/json": {
+                "schema":{
+                  "$ref":"#/components/schemas/Product"
+                }
+              }
+            }
+          }
+        }
+      },
+
+      "delete": {
+        "summary": "delete product by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema":{
+              "type": "string"
+            },
+            "required": "true"
+          }
+        ],
+        "responses": {
+          "200":{
+            "description": "product is deleted"
+          }
+        }
+      }
+    }
+  }
+}
+
