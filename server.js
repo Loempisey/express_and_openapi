@@ -14,7 +14,8 @@ const server = http.createServer(app);
 // const swaggerDocument = YAML.load('api/swagger.yaml')
 dotenv.config({path:'config.env'})
 
-const PORT = process.env.PORT || 8888
+const PORT = process.env.PORT || 9999
+
 const connectionDB = require('./utils/db/connection')
 connectionDB();
 // console.log(PORT)
@@ -47,6 +48,7 @@ app.use(bodyParser.urlencoded());
 require('./routes/products.routes')(app)
 swagger.setAppHandler(app);
 
+app.get('/', (req, res)=> res.send("WELCOME TO API"))
 // app.get('/product/:id/name/:name', (req, res)=>{
 //     const id = req.params.id;
 //     const name = req.params.name;
