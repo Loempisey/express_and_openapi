@@ -1,0 +1,13 @@
+version: '3.8'  #specifies docker compose version
+services:
+  api:
+    build:
+      context: ./
+    volumes:
+      - .:/src
+    command: npm run dev 
+    ports:
+      - "8888:8888"
+    environment:
+      NODE_ENV: development
+      DEBUG: nodejs-docker-express:*

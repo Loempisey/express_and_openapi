@@ -14,7 +14,7 @@ const server = http.createServer(app);
 // const swaggerDocument = YAML.load('api/swagger.yaml')
 dotenv.config({path:'config.env'})
 
-const PORT = process.env.PORT || 9999
+const PORT = process.env.PORT || 8888
 
 const connectionDB = require('./utils/db/connection')
 connectionDB();
