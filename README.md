@@ -18,3 +18,13 @@ $ npm install
 $ npm run up ( install packages & dependencies )
 $ npm run down ( stop application from running )
 ```
+## Run Test
+```
+$ npm run dev 
+$ http://localhost:8888
+```
+## Test Swagger-Ui
+```
+$ npm run dev 
+$ http://localhost:8888/api-docs
+```
