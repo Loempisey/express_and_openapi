@@ -1,5 +1,6 @@
 const db = require('./../models');
 
+
 const createProduct = async (req, res)=>{
     const body = req.body;
     if(Object.keys(body).length == 0){
@@ -90,3 +91,4 @@ module.exports={
     updateProduct,
     deleteProduct
 }
+

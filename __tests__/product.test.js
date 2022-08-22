@@ -12,7 +12,7 @@ describe("Start testing ===> ", () => {
       const res = await request(app)
       .post("/products")
       .send({
-        pro_name: "danisa",
+        pro_name: "Danisa",
         description: "good",
         category: "cake",
         price: 10

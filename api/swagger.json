@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Document API",
+    "title": "Api Document",
     "version": "1.0.0"
   },
   "servers": [
@@ -9,6 +9,7 @@
       "url": "http://localhost:8888"
     }
   ],
+  
   "components":{
     "schemas": {
       "Product":{
@@ -28,34 +29,26 @@
           }
         }
       },
-
-      "updateProduct": {
-        "type": "object",
-        "required": [
-          "pro_name",
-          "description",
-          "category",
-          "price"
-        ],
-        "properties": {
-          "pro_name": {
-            "type": "string",
-            "example": "Danisa"
+      "User":{
+        "type":"object",
+        "properties":{
+          "username":{
+            "type": "string"
           },
-          "description":{
-            "type": "string",
-            "example": "good"
+          "email": {
+            "type": "string"
           },
-          "category": {
-            "type": "string",
-            "example": "cake"
-          },
-          "price": {
-            "type": "string",
-            "example": "12"
+          "password":{
+            "type": "string"
           }
-
         }
+      }
+    },
+    "securitySchemes":{
+      "MyUserToken":{
+        "type": "apiKey",
+        "in": "header",
+        "name":"Authorization"
       }
     }
   },
@@ -78,7 +71,12 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "MyUserToken":[]
+          }
+            ]
       },
 
       "post": {
@@ -105,6 +103,7 @@
             }
           }
         }
+ 
       }
     },  
     "/products/{id}":{
@@ -187,6 +186,77 @@
             "description": "product is deleted"
           }
         }
+      }
+  
+    },
+    "/user":{
+      "post":{
+        "summary":"create a new user",
+        "requestBody":{
+          "required": "true",
+          "content":{
+            "application/json":{
+              "schema":{
+                "$ref":"#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description":"user is created",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "$ref":"#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/signin":{
+      "post":{
+        "summary":"sign in to get token",
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties":{
+                  "email":{
+                    "type":"string"
+                  },
+                  "password":{
+                    "type":"string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses":{
+          "201":{
+            "description":"user is created",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties":{
+                    "email":{
+                      "type":"string"
+                    },
+                    "password":{
+                      "type":"string"
+                    }
+                  }  
+                }
+              }
+            }
+          }
+        }
+
       }
     }
   }
