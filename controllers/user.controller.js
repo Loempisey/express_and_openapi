@@ -1,6 +1,5 @@
 const db = require('./../models');
 const bcrypt = require('bcryptjs');
-const isEmail = require('validator/lib/isEmail');
 const jwt = require('jsonwebtoken')
 const { user } = require('./../models');
 

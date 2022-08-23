@@ -71,12 +71,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "MyUserToken":[]
-          }
-            ]
+        }
       },
 
       "post": {
@@ -166,7 +161,12 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "MyUserToken":[]
+          }
+            ]
       },
 
       "delete": {
