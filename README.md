@@ -14,7 +14,6 @@ Start building API from scratch with express and openapi
 ```
 $ git clone https://github.com/Loempisey/express_and_openapi.git
 $ cd express_and_openapi
-$ npm install
 $ npm run up ( install packages & dependencies )
 $ npm run down ( stop application from running )
 ```
