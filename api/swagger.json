@@ -108,7 +108,7 @@
     },  
     "/products/{id}":{
       "get": {
-        "summary": "return all products",
+        "summary": "get a product by id",
         "parameters": [
           {
             "name": "id",
@@ -189,7 +189,7 @@
       }
   
     },
-    "/user":{
+    "/user/signup":{
       "post":{
         "summary":"create a new user",
         "requestBody":{
