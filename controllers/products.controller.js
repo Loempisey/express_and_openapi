@@ -74,9 +74,8 @@ const updateProduct = async (req, res)=>{
 
 const deleteProduct = async (req, res)=>{
     const id = req.params.id;
-    const body = req.params.id;
     try {
-        const response = await db.products.findByIdAndRemove(id, body)
+        const response = await db.products.findByIdAndRemove(id)
         res.status(200).send({data: response, message: "product is deleted"})
     } catch (error) {
         res.status(500).send({error: error, message:"Internal server error"})
