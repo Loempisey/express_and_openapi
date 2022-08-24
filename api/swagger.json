@@ -54,7 +54,7 @@
   },
 
   "paths": {
-    "/products": {
+    "/api/v1/products": {
       "get": {
         "summary": "return all products",
         "responses": {
@@ -101,7 +101,7 @@
  
       }
     },  
-    "/products/{id}":{
+    "/api/v1/products/{id}":{
       "get": {
         "summary": "get a product by id",
         "parameters": [
