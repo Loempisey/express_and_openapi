@@ -9,9 +9,9 @@ module.exports = (app) =>{
         next(); 
       });
     app.get('/api/v1/products',controller.getProduct);
-    app.get('/api/v1/products/:id', controller.getProductById);
+    app.get('/api/v1/products/:id', [authJwt.verifyToken], controller.getProductById);
     app.post('/api/v1/products', controller.createProduct);
-    app.put('/api/v1/products/:id', [authJwt.verifyToken], controller.updateProduct);
+    app.put('/api/v1/products/:id', controller.updateProduct);
     app.delete('/api/v1/products/:id',controller.deleteProduct)
 }
 
