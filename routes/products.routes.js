@@ -8,12 +8,13 @@ module.exports = (app) =>{
         );
         next(); 
       });
-    app.get('/products', [authJwt.verifyToken],controller.getProduct);
-    app.get('/products/:id', controller.getProductById);
-    app.post('/products', controller.createProduct);
-    app.put('/products/:id', controller.updateProduct);
-    app.delete('/products/:id',controller.deleteProduct)
+    app.get('/api/v1/products',controller.getProduct);
+    app.get('/api/v1/products/:id', [authJwt.verifyToken], controller.getProductById);
+    app.post('/api/v1/products', controller.createProduct);
+    app.put('/api/v1/products/:id', controller.updateProduct);
+    app.delete('/api/v1/products/:id',controller.deleteProduct)
 }
+
 
 
 

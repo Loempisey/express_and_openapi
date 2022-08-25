@@ -45,16 +45,17 @@
       }
     },
     "securitySchemes":{
-      "MyUserToken":{
+      "AuthToken":{
         "type": "apiKey",
-        "in": "header",
-        "name":"Authorization"
+        "in":"header",
+        "name": "x-access-token"
+        
       }
     }
   },
 
   "paths": {
-    "/products": {
+    "/api/v1/products": {
       "get": {
         "summary": "return all products",
         "responses": {
@@ -71,12 +72,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "MyUserToken":[]
-          }
-            ]
+        }
       },
 
       "post": {
@@ -106,7 +102,7 @@
  
       }
     },  
-    "/products/{id}":{
+    "/api/v1/products/{id}":{
       "get": {
         "summary": "get a product by id",
         "parameters": [
@@ -130,9 +126,13 @@
               }
             }
           }
-        }
+        },
+        "security": [
+          {
+            "AuthToken":[]
+          }
+            ]
       },
-
       "put": {
         "summary": "update product by id",
         "parameters": [
@@ -150,7 +150,15 @@
           "content":{
             "application/json":{
               "schema": {
-                "$ref":"#/components/schemas/Product"
+                "type":"object",
+                "properties":{
+                  "pro_name":{
+                    "type":"string"
+                  },
+                  "description":{
+                    "type":"string"
+                  }
+                }
               }
             }
           }
@@ -189,8 +197,12 @@
       }
   
     },
+    
     "/user/signup":{
       "post":{
+        "tags": [
+          "Admin"
+        ],      
         "summary":"create a new user",
         "requestBody":{
           "required": "true",
@@ -218,6 +230,9 @@
     },
     "/user/signin":{
       "post":{
+        "tags": [
+          "Admin"
+        ],      
         "summary":"sign in to get token",
         "requestBody":{
           "content":{

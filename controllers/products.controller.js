@@ -63,13 +63,6 @@ const updateProduct = async (req, res)=>{
             message: "Internal server error"
         })
     }
-    
-    // try {
-    //     const response = await db.products.findByIdAndUpdate(id, body)
-    //     res.status(200).send({data: response, message:"product is updated"})
-    // } catch (error) {
-    //     res.status(500).send({error: error, message: "cannot update product"})
-    // }
 }
 
 const deleteProduct = async (req, res)=>{
@@ -80,7 +73,6 @@ const deleteProduct = async (req, res)=>{
     } catch (error) {
         res.status(500).send({error: error, message:"Internal server error"})
     }
-
 }
 
 module.exports={
