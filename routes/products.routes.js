@@ -15,6 +15,3 @@ module.exports = (app) =>{
     app.delete('/api/v1/products/:id',controller.deleteProduct)
 }
 
-
-
-

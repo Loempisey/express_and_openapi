@@ -59,7 +59,7 @@ app.get('/', (req, res)=> res.send("WELCOME TO API"))
 // })
 
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/openapi', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 server.listen(PORT,() => {
     console.log(`Server is starting http://localhost:${PORT}`)
 })
