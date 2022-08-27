@@ -90,6 +90,7 @@ const createSignIn = async (req, res)=>{
         res.status(500).send({ message: error || "Error is occured." });
     }    
 }
+
 module.exports = {
     createUser,
     createSignIn
