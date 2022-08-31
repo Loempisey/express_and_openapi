@@ -1,6 +1,6 @@
 FROM node:16.13.1-alpine3.13
 
-WORKDIR /api-demo
+WORKDIR /express_and_openapi
 
 COPY package*.json ./
 
