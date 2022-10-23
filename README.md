@@ -25,5 +25,5 @@ $ http://localhost:8888
 ## Test Swagger-Ui
 ```
 $ npm run dev 
-$ http://localhost:8888/api-docs
+$ http://localhost:8888/openapi
 ```
